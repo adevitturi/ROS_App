@@ -1,4 +1,4 @@
-package com.github.ros.android.helloros;
+package com.github.ros.android.voicecommands;
 
 import android.os.Bundle;
 import androidx.preference.Preference;

@@ -1,4 +1,4 @@
-package com.github.ros.android.helloros;
+package com.github.ros.android.voicecommands;
 
 import org.ros.namespace.GraphName;
 import org.ros.node.AbstractNodeMain;

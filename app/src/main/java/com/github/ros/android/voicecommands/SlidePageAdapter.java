@@ -1,4 +1,4 @@
-package com.github.ros.android.helloros;
+package com.github.ros.android.voicecommands;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;

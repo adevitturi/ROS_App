@@ -1,11 +1,9 @@
-package com.github.ros.android.helloros;
+package com.github.ros.android.voicecommands;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;

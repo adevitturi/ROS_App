@@ -1,9 +1,8 @@
-package com.github.ros.android.helloros;
+package com.github.ros.android.voicecommands;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

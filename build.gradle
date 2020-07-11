@@ -10,7 +10,7 @@ buildscript {
 apply plugin: 'catkin'
 
 allprojects {
-    group 'com.github.ros.android.helloros'
+    group 'com.github.ros.android.voicecommands'
     version = project.catkin.pkg.version
 }
 

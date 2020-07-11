@@ -30,7 +30,7 @@ android {
     }
     productFlavors {
         kinetic {
-            applicationId "com.github.ros.android.helloros.kinetic"
+            applicationId "com.github.ros.android.voicecommands.kinetic"
         }
     }
     lintOptions {

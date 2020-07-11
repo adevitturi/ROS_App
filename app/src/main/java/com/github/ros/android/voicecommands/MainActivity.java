@@ -1,4 +1,4 @@
-package com.github.ros.android.helloros;
+package com.github.ros.android.voicecommands;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.speech.RecognizerIntent;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
 

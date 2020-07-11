@@ -1,6 +1,4 @@
-package com.github.ros.android.helloros;
-
-import java.io.Serializable;
+package com.github.ros.android.voicecommands;
 
 public class TargetLocation {
     private static final String SEPARATOR = "@";

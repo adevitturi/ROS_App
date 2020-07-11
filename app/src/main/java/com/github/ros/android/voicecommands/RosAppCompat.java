@@ -1,4 +1,4 @@
-package com.github.ros.android.helloros;
+package com.github.ros.android.voicecommands;
 
 import android.content.ComponentName;
 import android.content.Intent;

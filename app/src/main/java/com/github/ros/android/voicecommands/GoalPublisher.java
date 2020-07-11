@@ -1,15 +1,11 @@
-package com.github.ros.android.helloros;
+package com.github.ros.android.voicecommands;
 
-import org.ros.concurrent.CancellableLoop;
-import org.ros.internal.message.RawMessage;
 import org.ros.namespace.GraphName;
 import org.ros.node.AbstractNodeMain;
 import org.ros.node.ConnectedNode;
-import org.ros.node.NodeMain;
 import org.ros.node.topic.Publisher;
 
 import geometry_msgs.Vector3;
-import geometry_msgs.Vector3Stamped;
 
 public class GoalPublisher extends AbstractNodeMain {
   private String topic_name;
