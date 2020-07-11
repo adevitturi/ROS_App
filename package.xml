@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package>
+  <name>HelloROS</name>
+  <version>1.0.0</version>
+  <description>A simple Android sample app using ROS.</description>
+  <url type="repository">https://github.com/jballoffet/hello-ros-android</url>
+
+  <maintainer email="javier.balloffer@gmail.com">Javier Balloffet</maintainer>
+
+  <license>Apache 2.0</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>rosjava_build_tools</build_depend>
+  <build_depend>rosjava_bootstrap</build_depend>
+  <build_depend>android_core</build_depend>
+  <build_depend>android_extras</build_depend>
+  <build_depend>android_remocons</build_depend>
+  <build_depend>rosjava_messages</build_depend>
+</package>

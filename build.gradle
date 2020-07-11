@@ -1,0 +1,29 @@
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.10.2'
+}
+
+buildscript {
+    apply from: "https://github.com/rosjava/android_core/raw/kinetic/buildscript.gradle"
+}
+
+apply plugin: 'catkin'
+
+allprojects {
+    group 'com.github.ros.android.helloros'
+    version = project.catkin.pkg.version
+}
+
+subprojects {
+    apply plugin: 'ros-android'
+
+    afterEvaluate { project ->
+        android {
+            packagingOptions {
+                exclude 'META-INF/LICENSE.txt'
+                exclude 'META-INF/NOTICE.txt'
+            }
+            flavorDimensions 'default'
+        }
+    }
+}
