@@ -24,7 +24,7 @@ import java.util.Locale;
 /** Activity for sending voice commands that communicate with ROS. */
 public class MainActivity extends RosAppCompat implements SharedPreferences.OnSharedPreferenceChangeListener{
   private static final int SPEECH_CODE = 73;
-  public static final String DEFAULT_GOAL_TOPIC = "assistant_goal";
+  public static final String DEFAULT_GOAL_TOPIC = "goal_assistant";
   public static final String DEFAULT_NAMESPACE = "create1";
 
   private StopPublisher stopPublisher;
