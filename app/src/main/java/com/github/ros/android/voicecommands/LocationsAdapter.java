@@ -15,6 +15,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+/** Recyclerview adapter to display the current locations. */
 public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.LocationViewHolder> implements View.OnClickListener {
     private Context context;
     private SharedPreferences preferences;
@@ -22,7 +23,6 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.Loca
     private final List<String> dataset = new ArrayList<>();
 
     public static class LocationViewHolder extends RecyclerView.ViewHolder {
-        // each data item is just a string in this case
         private TextView title;
         private TextView xvalue;
         private TextView yvalue;
@@ -36,23 +36,25 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.Loca
             this.zvalue = v.findViewById(R.id.z_value);
         }
 
+        /** Sets the location title. */
         public void setTitle (String title) {
            this.title.setText(title);
         }
 
+        /** Sets the location values. */
         public void setValues (String x, String y, String z) {
             this.xvalue.setText(x);
             this.yvalue.setText(y);
             this.zvalue.setText(z);
         }
 
+        /** Sets the title and values. */
         public void setLocation(TargetLocation location) {
             setTitle(location.getName());
             setValues(location.getX(), location.getY(), location.getZ());
         }
     }
 
-    // Provide a suitable constructor (depends on the kind of dataset)
     public LocationsAdapter(LocationsDialog locationsDialog, Context context) {
         this.context = context;
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -60,18 +62,17 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.Loca
         updateDataSet();
     }
 
-    // Create new views (invoked by the layout manager)
     @Override
     public LocationsAdapter.LocationViewHolder onCreateViewHolder(ViewGroup parent,
                                                                   int viewType) {
-        // create a new view
+        // Creates a new view for the view holder.
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.location, parent, false);
         v.setOnClickListener(this);
         LocationViewHolder vh = new LocationViewHolder(v);
         return vh;
     }
 
-    // Replace the contents of a view (invoked by the layout manager)
+    // Replaces the contents of a view with the corresponding location.
     @Override
     public void onBindViewHolder(LocationViewHolder holder, int position) {
         String key = dataset.get(position);
@@ -80,12 +81,13 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.Loca
         holder.setLocation(location);
     }
 
-    // Return the size of your dataset (invoked by the layout manager)
+    // Returns the size of the dataset.
     @Override
     public int getItemCount() {
         return dataset.size();
     }
 
+    /** Creates an edit dialog when a view holder is clicked. */
     @Override
     public void onClick(View view) {
         String[] params = new String[4];
@@ -96,6 +98,7 @@ public class LocationsAdapter extends RecyclerView.Adapter<LocationsAdapter.Loca
         locationsDialog.createFilledDialog(params).show();
     }
 
+    /** Updates the whole dataset to the current values. */
     public void updateDataSet(){
         Set<String> keyset = preferences.getStringSet(context.getString(R.string.app_key_set),new LinkedHashSet<>());
         dataset.clear();

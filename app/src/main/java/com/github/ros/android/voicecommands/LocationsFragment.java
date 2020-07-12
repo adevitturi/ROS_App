@@ -16,6 +16,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/** Fragment that shows all the locations. It allows editing and adding new ones. */
 public class LocationsFragment extends Fragment implements View.OnClickListener, OnDialogEventListener {
     private FloatingActionButton button;
     private LocationsAdapter locationsAdapter;
@@ -27,6 +28,7 @@ public class LocationsFragment extends Fragment implements View.OnClickListener,
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        // Get shared preferences.
         preferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         locationsDialog = new LocationsDialog(getContext());
 
@@ -58,6 +60,7 @@ public class LocationsFragment extends Fragment implements View.OnClickListener,
         locationsDialog.createEmptyDialog().show();
     }
 
+    /** Called when a new location is created. */
     @Override
     public void onCreate(String[] params) {
         // Store new location.
@@ -73,6 +76,7 @@ public class LocationsFragment extends Fragment implements View.OnClickListener,
         locationsAdapter.notifyDataSetChanged();
     }
 
+    /** Called when a location is deleted. */
     @Override
     public void onDelete(String name) {
         // Remove location.
@@ -90,6 +94,7 @@ public class LocationsFragment extends Fragment implements View.OnClickListener,
         locationsAdapter.notifyDataSetChanged();
     }
 
+    /** Called when a location is edited. */
     @Override
     public void onEdit(String[] params) {
         // Update and store location.

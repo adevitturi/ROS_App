@@ -7,6 +7,7 @@ import org.ros.node.topic.Publisher;
 
 import std_msgs.Float32;
 
+/** A node to publish cancel-goal messages. */
 public class StopPublisher extends AbstractNodeMain {
   private String topic_name;
   private Publisher<Float32> publisher;

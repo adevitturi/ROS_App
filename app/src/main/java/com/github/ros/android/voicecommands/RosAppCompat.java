@@ -21,6 +21,7 @@ import java.net.SocketException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+/** ROS Activity that supports AppCompatActivity members. */
 public abstract class RosAppCompat extends AppCompatActivity {
     protected static final int MASTER_CHOOSER_REQUEST_CODE = 0;
     private final RosAppCompat.NodeMainExecutorServiceConnection nodeMainExecutorServiceConnection;

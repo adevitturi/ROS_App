@@ -1,5 +1,6 @@
 package com.github.ros.android.voicecommands;
 
+/** A class that represents a physical location. */
 public class TargetLocation {
     private static final String SEPARATOR = "@";
     private final String name;
@@ -22,22 +23,27 @@ public class TargetLocation {
         this(bundle.split(SEPARATOR));
     }
 
+    /** Gets x coordinate. */
     public String getX() {
         return x;
     }
 
+    /** Gets y coordinate. */
     public String getY() {
         return y;
     }
 
+    /** Gets z coordinate. */
     public String getZ() {
         return z;
     }
 
+    /** Gets the lcoation's name. */
     public String getName() {
         return name;
     }
 
+    /** Serializes the location to a string. */
     public String toString() {
         return name + SEPARATOR + x + SEPARATOR + y + SEPARATOR + z;
     }

@@ -21,9 +21,11 @@ import org.ros.node.NodeMainExecutor;
 import java.util.List;
 import java.util.Locale;
 
+/** Activity for sending voice commands that communicate with ROS. */
 public class MainActivity extends RosAppCompat implements SharedPreferences.OnSharedPreferenceChangeListener{
   private static final int SPEECH_CODE = 73;
   public static final String DEFAULT_GOAL_TOPIC = "assistant_goal";
+  public static final String DEFAULT_NAMESPACE = "create1";
 
   private StopPublisher stopPublisher;
   private GoalPublisher goalPublisher;
@@ -52,9 +54,12 @@ public class MainActivity extends RosAppCompat implements SharedPreferences.OnSh
     preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
     preferences.registerOnSharedPreferenceChangeListener(this);
 
-    // Set topic default to prefs.
+    // Set topic and namespace default to prefs.
     if (!preferences.contains(getString(R.string.topic_key))){
       preferences.edit().putString(getString(R.string.topic_key), DEFAULT_GOAL_TOPIC);
+    }
+    if (!preferences.contains(getString(R.string.namespace_key))){
+      preferences.edit().putString(getString(R.string.namespace_key), DEFAULT_NAMESPACE);
     }
     speechValidator = new SpeechValidator(this);
   }
@@ -92,6 +97,7 @@ public class MainActivity extends RosAppCompat implements SharedPreferences.OnSh
       super.onActivityResult(requestCode, resultCode, data);
       return;
     }
+    /** Gets the payload from the speech recognition API. */
     if(requestCode == SPEECH_CODE) {
       if(resultCode == RESULT_OK && data != null) {
         List<String> results = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
@@ -139,11 +145,12 @@ public class MainActivity extends RosAppCompat implements SharedPreferences.OnSh
     viewPager.setCurrentItem(index);
   }
 
-  /** Sets up and executes ROS publisher node. */
+  /** Sets up and executes ROS publishers nodes. */
   private void setUpPublishers() {
     String topic = preferences.getString(getString(R.string.topic_key), DEFAULT_GOAL_TOPIC);
-    goalPublisher = new GoalPublisher(topic);
-    stopPublisher = new StopPublisher(topic + "_cancel");
+    String namespace = preferences.getString(getString(R.string.namespace_key), DEFAULT_NAMESPACE);
+    goalPublisher = new GoalPublisher(namespace+"/"+topic);
+    stopPublisher = new StopPublisher(namespace+"/"+topic + "_cancel");
     nodeMainExecutorMutableLiveData.getValue().execute(goalPublisher,
             nodeConfigurationMutableLiveData.getValue());
     nodeMainExecutorMutableLiveData.getValue().execute(stopPublisher,
@@ -154,22 +161,26 @@ public class MainActivity extends RosAppCompat implements SharedPreferences.OnSh
   /** Sets up and executes ROS subscriber node. */
   private void setUpSubscriber() {
     String topic = preferences.getString(getString(R.string.topic_key), DEFAULT_GOAL_TOPIC) + "_result";
-    resultListener = new ResultListener(topic, this);
+    String namespace = preferences.getString(getString(R.string.namespace_key), DEFAULT_NAMESPACE);
+    resultListener = new ResultListener(namespace+"/"+topic, this);
     nodeMainExecutorMutableLiveData.getValue().execute(resultListener,
             nodeConfigurationMutableLiveData.getValue());
   }
 
+  /** Gets the main executor. */
   public LiveData<NodeMainExecutor> getNodeMainExec() {
     return nodeMainExecutorMutableLiveData;
   }
 
+  /** Gets the node configuration. */
   public LiveData<NodeConfiguration> getNodeConfig() {
     return nodeConfigurationMutableLiveData;
   }
 
   @Override
   public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
-    if(s.equals(getString(R.string.topic_key)) && isPublisherRunning){
+    if((s.equals(getString(R.string.topic_key)) || s.equals(getString(R.string.namespace_key)))
+            && isPublisherRunning){
       nodeMainExecutorMutableLiveData.getValue().shutdownNodeMain(goalPublisher);
       nodeMainExecutorMutableLiveData.getValue().shutdownNodeMain(stopPublisher);
       setUpPublishers();

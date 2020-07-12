@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/** A class to validate voice commands and get the corresponding location to its payload. */
 public class SpeechValidator {
     private static final String[] MOVE_COMMANDS = new String[] {"move", "go", "walk", "run", "direct"};
     private static final String[] STOP_COMMANDS = new String[] {"wait", "stop", "cancel"};

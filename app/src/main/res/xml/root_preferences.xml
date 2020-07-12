@@ -11,6 +11,17 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory app:title="@string/namespace_title"
+        app:iconSpaceReserved="false">
+
+        <EditTextPreference
+            app:key="@string/namespace_key"
+            app:title="@string/namespace_pref"
+            app:useSimpleSummaryProvider="true"
+            app:iconSpaceReserved="false"/>
+
+    </PreferenceCategory>
+
     <PreferenceCategory app:title="@string/locations_title"
         app:iconSpaceReserved="false">
 

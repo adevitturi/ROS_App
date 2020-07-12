@@ -13,10 +13,12 @@ import androidx.appcompat.app.AlertDialog;
 import java.util.ArrayList;
 import java.util.List;
 
+/** Creates dialogs for editing and adding new locations.  */
 public class LocationsDialog {
     private Context context;
     private List<OnDialogEventListener> listeners = new ArrayList<>();
 
+    /** Registers listener to the dialog events. */
     public void registerListener(OnDialogEventListener listener) {
         if(listeners.contains(listener)){
             return;
@@ -24,6 +26,7 @@ public class LocationsDialog {
         listeners.add(listener);
     }
 
+    /** Unregisters listeners. */
     public void unregisterListener(OnDialogEventListener listener) {
         listeners.remove(listener);
     }
@@ -32,6 +35,7 @@ public class LocationsDialog {
         this.context = context;
     }
 
+    /** Creates an empty dialog to create a new location. */
     public Dialog createEmptyDialog(){
         LayoutInflater inflater = LayoutInflater.from(context);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
@@ -70,6 +74,7 @@ public class LocationsDialog {
         return alertDialog.create();
     }
 
+    /** Creates a fileld dialog to edit a location's values. */
     public Dialog createFilledDialog(String[] params){
         LayoutInflater inflater = LayoutInflater.from(context);
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);

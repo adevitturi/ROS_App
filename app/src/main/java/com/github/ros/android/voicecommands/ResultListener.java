@@ -11,6 +11,7 @@ import org.ros.node.AbstractNodeMain;
 import org.ros.node.ConnectedNode;
 import org.ros.node.topic.Subscriber;
 
+/** Node that subscribes to goal results and displays its payload. */
 public class ResultListener extends AbstractNodeMain {
   private final String topic;
   private final Context context;

@@ -7,6 +7,7 @@ import org.ros.node.topic.Publisher;
 
 import geometry_msgs.Vector3;
 
+/** Node to publish Vector3 goals. */
 public class GoalPublisher extends AbstractNodeMain {
   private String topic_name;
   private Publisher<Vector3> publisher;
@@ -30,6 +31,7 @@ public class GoalPublisher extends AbstractNodeMain {
     this.topic_name = topic;
   }
 
+  /** Publishes the goal. */
   public void publishMessage(double x, double y, double z) {
     Vector3 cmd = publisher.newMessage();
     cmd.setX(x);

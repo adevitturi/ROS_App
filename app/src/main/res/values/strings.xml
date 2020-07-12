@@ -23,16 +23,22 @@
 
     <!-- Preference Titles -->
     <string name="topics_title">Topics</string>
+    <string name="namespace_title">Namespace</string>
     <string name="locations_title">Locations</string>
 
     <!-- Preferences Messages -->
     <string name="topic_pref">Topic name</string>
+    <string name="namespace_pref">Namespace of the topics</string>
     <string name="locations_pref">Edit locations</string>
 
     <!-- Preferences keys -->
     <string name="topic_key">topic</string>
+    <string name="namespace_key">namespace</string>
     <string name="locations_key">locations</string>
     <string name="app_key_set">application_keys</string>
     <string name="locations_name_suffix_key">%s_name</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
