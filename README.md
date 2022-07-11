@@ -1,7 +1,7 @@
 # ROS - Android Assistant App.
 An application to send messages to ROS using your voice.
 
-[See a video here!](https://www.youtube.com/watch?v=LmluJksvSPI)
+[![Video not available...](https://img.youtube.com/vi/LmluJksvSPI/0.jpg)](https://www.youtube.com/watch?v=LmluJksvSPI)
 
 ## Build and install
 Build and install the app with Android Studio.
